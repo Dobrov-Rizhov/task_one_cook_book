@@ -45,11 +45,16 @@ def homeWorktree(text1, text2, text3):
     result = []
     filename = [text1, text2, text3]
     for name in filename:
-        file_data = {'keys': os.path.basename(name).split('.')[0]}
-        with open(name) as f:
-            contents = f.read()
-            file_data['values'] = contents.replace(os.linesep, ' ').rsplit(',')
-        result.append(file_data)
+        name_text = name.split('.')[0]
+        with open(name) as file:
+            count = 0
+            connects = file.read()
+            line = connects.split('\n')
+            for i in line:
+                if i:
+                    count += 1
+                print(f'Строка номер {count} файла номер {name_text}')
+
     print(result)
 
 
